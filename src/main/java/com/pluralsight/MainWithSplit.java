@@ -2,31 +2,29 @@ package com.pluralsight;
 
 import java.util.Scanner;
 
-public class Main {
+public class MainWithSplit {
     public static void main (String[] args) {
         System.out.println("hello world!");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter your name: ");
         String fullname = scanner.nextLine();
+        //String fullname = "Mohammed F Khan";
 
         System.out.println(fullname);
 
-        int indexOffFirstSpace = fullname.indexOf(" ");
-
-        String firstName = fullname.substring(0, indexOffFirstSpace);
-
-        String temp = fullname.substring(indexOffFirstSpace + 1);
-        int indexOffFirstSpaceInTemp = temp.indexOf(" ");
+        String[] nameParts = fullname.split(" ");
+        String firstName = nameParts[0];
 
         String middleName;
         String lastName;
-        if(indexOffFirstSpaceInTemp < 0){
-            middleName ="";
-            lastName = temp;
+
+        if(nameParts.length == 2){
+            middleName = "";
+            lastName = nameParts[1];
         }
         else{
-            middleName = temp.substring(0, indexOffFirstSpaceInTemp);
-            lastName = temp.substring(indexOffFirstSpaceInTemp + 1);
+            middleName = nameParts[1];
+            lastName = nameParts[2];
         }
 
         System.out.println("First name: " + firstName);
